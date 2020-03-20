@@ -2,19 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Models;
 
 namespace RestApi.Services.CraftsManService
 {
     public interface ICraftsManService
     {
-        Task<List<Models.CraftsMan>> GetCraftsMen();
+        Task<List<Haandvaerker>> GetCraftsMen();
 
-        Task<Models.CraftsMan> GetCraftsMan(Guid id);
+        Task<Haandvaerker> GetCraftsMan(Guid id);
 
-        Task SaveCraftsMan(Models.CraftsMan craftsMan);
+        Task SaveCraftsMan(Haandvaerker craftsMan);
 
         Task DeleteCraftsMan(Guid id);
 
-        Task EditCraftsMan(Guid id, Models.CraftsMan craftsMan);
+        Task EditCraftsMan(Guid id, Haandvaerker craftsMan);
     }
 }

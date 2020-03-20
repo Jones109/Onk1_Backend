@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using RestApi.Services.CraftsManService;
+using Models;
 
 namespace RestApi.Controllers
 {
@@ -23,7 +24,7 @@ namespace RestApi.Controllers
         }
 
         [HttpGet]
-        public async Task<List<Models.CraftsMan>> Get()
+        public async Task<List<Haandvaerker>> Get()
         {
             var craftsMen = await _craftsManService.GetCraftsMen();
 
@@ -32,7 +33,7 @@ namespace RestApi.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        public async Task<Models.CraftsMan> Get([FromRoute] Guid id)
+        public async Task<Haandvaerker> Get([FromRoute] Guid id)
         {
             var craftsMan = await _craftsManService.GetCraftsMan(id);
 
@@ -41,7 +42,7 @@ namespace RestApi.Controllers
 
         [HttpPut]
         [Route("{id}")]
-        public async Task<IActionResult> Put([FromRoute] Guid id, [FromBody] Models.CraftsMan newCraftsMan)
+        public async Task<IActionResult> Put([FromRoute] Guid id, [FromBody] Haandvaerker newCraftsMan)
         {
             await _craftsManService.EditCraftsMan(id, newCraftsMan);
 
@@ -59,7 +60,7 @@ namespace RestApi.Controllers
 
         [HttpPost]
         [Route("{id}")]
-        public async Task<IActionResult> Post([FromBody] Models.CraftsMan craftsMan)
+        public async Task<IActionResult> Post([FromBody] Haandvaerker craftsMan)
         {
             await _craftsManService.SaveCraftsMan(craftsMan);
 

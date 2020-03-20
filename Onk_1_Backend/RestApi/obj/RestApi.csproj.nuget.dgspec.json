@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Bruger\\source\\repos\\Onk_1_Backend\\RestApi\\RestApi.csproj": {}
+    "C:\\Git\\Onk1_Backend\\Onk_1_Backend\\RestApi\\RestApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Bruger\\source\\repos\\Onk_1_Backend\\RestApi\\RestApi.csproj": {
+    "C:\\Git\\Onk1_Backend\\Onk_1_Backend\\RestApi\\RestApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Bruger\\source\\repos\\Onk_1_Backend\\RestApi\\RestApi.csproj",
+        "projectUniqueName": "C:\\Git\\Onk1_Backend\\Onk_1_Backend\\RestApi\\RestApi.csproj",
         "projectName": "RestApi",
-        "projectPath": "C:\\Users\\Bruger\\source\\repos\\Onk_1_Backend\\RestApi\\RestApi.csproj",
-        "packagesPath": "C:\\Users\\Bruger\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Bruger\\source\\repos\\Onk_1_Backend\\RestApi\\obj\\",
+        "projectPath": "C:\\Git\\Onk1_Backend\\Onk_1_Backend\\RestApi\\RestApi.csproj",
+        "packagesPath": "C:\\Users\\Jonas Hansen\\.nuget\\packages\\",
+        "outputPath": "C:\\Git\\Onk1_Backend\\Onk_1_Backend\\RestApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Bruger\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Jonas Hansen\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -41,6 +41,16 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.2, )"
+            },
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",
               "version": "[1.9.10, )"

@@ -2,19 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Models;
 
 namespace RestApi.Services.ToolService
 {
     public interface IToolService
     {
-        Task<List<Models.Tool>> GetTools();
+        Task<List<Vaerktoej>> GetTools();
 
-        Task<Models.Tool> GetTool(Guid id);
+        Task<Vaerktoej> GetTool(Guid id);
 
-        Task SaveTool(Models.Tool tool);
+        Task SaveTool(Vaerktoej tool);
 
         Task DeleteTool(Guid id);
 
-        Task EditTool(Guid id, Models.Tool tool);
+        Task EditTool(Guid id, Vaerktoej tool);
     }
 }

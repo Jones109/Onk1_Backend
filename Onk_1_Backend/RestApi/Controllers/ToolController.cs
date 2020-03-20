@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using RestApi.Services.ToolService;
+using Models;
 
 namespace RestApi.Controllers
 {
@@ -23,16 +24,16 @@ namespace RestApi.Controllers
         
 
         [HttpGet]
-        public async Task<List<Models.Tool>> Get()
+        public async Task<List<Vaerktoej>> Get()
         {
-            List<Models.Tool> tools = await _toolService.GetTools();
+            List<Vaerktoej> tools = await _toolService.GetTools();
             
             return tools;
         }
 
         [HttpGet]
         [Route("{id}")]
-        public async Task<Models.Tool> Get([FromRoute] Guid id)
+        public async Task<Vaerktoej> Get([FromRoute] Guid id)
         {
             var tool = await _toolService.GetTool(id);
 
@@ -41,7 +42,7 @@ namespace RestApi.Controllers
 
         [HttpPut]
         [Route("{id}")]
-        public async Task<IActionResult> Put([FromRoute] Guid id, [FromBody] Models.Tool newTool)
+        public async Task<IActionResult> Put([FromRoute] Guid id, [FromBody] Vaerktoej newTool)
         {
             await _toolService.EditTool(id, newTool);
 
@@ -59,7 +60,7 @@ namespace RestApi.Controllers
 
         [HttpPost]
         [Route("{id}")]
-        public async Task<IActionResult> Post([FromBody] Models.Tool tool)
+        public async Task<IActionResult> Post([FromBody] Vaerktoej tool)
         {
             await _toolService.SaveTool(tool);
 

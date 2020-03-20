@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using RestApi.Services.ToolBoxService;
+using Models;
 
 namespace RestApi.Controllers
 {
@@ -22,16 +23,16 @@ namespace RestApi.Controllers
         }
 
         [HttpGet]
-        public async Task<List<Models.ToolBox>> Get()
+        public async Task<List<Vaerktoejskasse>> Get()
         {
-            List<Models.ToolBox> toolBoxes = await _toolBoxService.GetToolBoxes();
+            List<Vaerktoejskasse> toolBoxes = await _toolBoxService.GetToolBoxes();
 
             return toolBoxes;
         }
 
         [HttpGet]
         [Route("{id}")]
-        public async Task<Models.ToolBox> Get([FromRoute] Guid id)
+        public async Task<Vaerktoejskasse> Get([FromRoute] Guid id)
         {
             var toolBox = await _toolBoxService.GetToolBox(id);
 
@@ -40,7 +41,7 @@ namespace RestApi.Controllers
 
         [HttpPut]
         [Route("{id}")]
-        public async Task<IActionResult> Put([FromRoute] Guid id, [FromBody] Models.ToolBox newToolBox)
+        public async Task<IActionResult> Put([FromRoute] Guid id, [FromBody] Vaerktoejskasse newToolBox)
         {
             await _toolBoxService.EditToolBox(id, newToolBox);
 
@@ -58,7 +59,7 @@ namespace RestApi.Controllers
 
         [HttpPost]
         [Route("{id}")]
-        public async Task<IActionResult> Post([FromBody] Models.ToolBox toolBox)
+        public async Task<IActionResult> Post([FromBody] Vaerktoejskasse toolBox)
         {
             await _toolBoxService.SaveToolBox(toolBox);
 

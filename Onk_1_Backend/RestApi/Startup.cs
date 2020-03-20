@@ -6,11 +6,13 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using RestApi.Data;
 using RestApi.Services.CraftsManService;
 using RestApi.Services.ToolBoxService;
 using RestApi.Services.ToolService;
@@ -30,10 +32,11 @@ namespace RestApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddDbContext<HaandvaerkerDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddScoped<ICraftsManService, StubCraftsManService>();
-            services.AddScoped<IToolBoxService, StubToolBoxService>();
-            services.AddScoped<IToolService, StubToolService>();
+            services.AddScoped<ICraftsManService, CraftsManService>();
+            services.AddScoped<IToolBoxService, ToolBoxService>();
+            services.AddScoped<IToolService, ToolService>();
 
             services.AddSwaggerGen(c =>
             {
