@@ -9,13 +9,13 @@ namespace Models
     public partial class Vaerktoej
     {
         [Key]
-        public Guid VTId { get; set; }
+        public long VTId { get; set; }
         public DateTime VTAnskaffet { get; set; }
         public string VTFabrikat { get; set; }
         public string VTModel { get; set; }
         public string VTSerienr { get; set; }
         public string VTType { get; set; }
-        public Guid? LiggerIvtk { get; set; }
+        public int? LiggerIvtk { get; set; }
 
         public Vaerktoejskasse LiggerIvtkNavigation { get; set; }
     }

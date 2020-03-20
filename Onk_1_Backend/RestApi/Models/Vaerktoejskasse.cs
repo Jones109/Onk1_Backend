@@ -13,10 +13,10 @@ namespace Models
             Vaerktoej = new HashSet<Vaerktoej>();
         }
         [Key]
-        public Guid VTKId { get; set; }
+        public int VTKId { get; set; }
         public DateTime VTKAnskaffet { get; set; }
         public string VTKFabrikat { get; set; }
-        public Guid? VTKEjesAf { get; set; }
+        public int? VTKEjesAf { get; set; }
         public string VTKModel { get; set; }
         public string VTKSerienummer { get; set; }
         public string VTKFarve { get; set; }

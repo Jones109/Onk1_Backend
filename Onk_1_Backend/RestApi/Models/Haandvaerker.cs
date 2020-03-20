@@ -13,7 +13,7 @@ namespace Models
             Vaerktoejskasse = new HashSet<Vaerktoejskasse>();
         }
         [Key]
-        public Guid HaandvaerkerId { get; set; }
+        public int HaandvaerkerId { get; set; }
         public DateTime HVAnsaettelsedato { get; set; }
         public string HVEfternavn { get; set; }
         public string HVFagomraade { get; set; }

@@ -24,7 +24,7 @@ namespace RestApi.Services.CraftsManService
                 .Options;
         }
 
-        public async Task DeleteCraftsMan(Guid id)
+        public async Task DeleteCraftsMan(int id)
         {
             using (var context = new HaandvaerkerDbContext(_options))
             {
@@ -36,7 +36,7 @@ namespace RestApi.Services.CraftsManService
             }
         }
 
-        public async Task EditCraftsMan(Guid id, Haandvaerker craftsMan)
+        public async Task EditCraftsMan(Haandvaerker craftsMan)
         {
             using (var context = new HaandvaerkerDbContext(_options))
             {
@@ -45,7 +45,7 @@ namespace RestApi.Services.CraftsManService
             }
         }
 
-        public async Task<Haandvaerker> GetCraftsMan(Guid id)
+        public async Task<Haandvaerker> GetCraftsMan(int id)
         {
             using (var context = new HaandvaerkerDbContext(_options))
             {

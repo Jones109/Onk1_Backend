@@ -34,7 +34,7 @@ namespace RestApi.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        public async Task<Haandvaerker> Get([FromRoute] Guid id)
+        public async Task<Haandvaerker> Get([FromRoute] int id)
         {
             var craftsMan = await _craftsManService.GetCraftsMan(id);
 
@@ -43,16 +43,16 @@ namespace RestApi.Controllers
 
         [HttpPut]
         [Route("{id}")]
-        public async Task<IActionResult> Put([FromRoute] Guid id, [FromBody] Haandvaerker newCraftsMan)
+        public async Task<IActionResult> Put([FromBody] Haandvaerker newCraftsMan)
         {
-            await _craftsManService.EditCraftsMan(id, newCraftsMan);
+            await _craftsManService.EditCraftsMan(newCraftsMan);
 
             return NoContent();
         }
 
         [HttpDelete]
         [Route("{id}")]
-        public async Task<IActionResult> Delete([FromRoute] Guid id)
+        public async Task<IActionResult> Delete([FromRoute] int id)
         {
             await _craftsManService.DeleteCraftsMan(id);
 

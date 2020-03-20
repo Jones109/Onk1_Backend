@@ -10,12 +10,12 @@ namespace RestApi.Services.ToolBoxService
     {
         Task<List<Vaerktoejskasse>> GetToolBoxes();
 
-        Task<Vaerktoejskasse> GetToolBox(Guid id);
+        Task<Vaerktoejskasse> GetToolBox(int id);
 
         Task SaveToolBox(Vaerktoejskasse toolBox);
 
-        Task DeleteToolBox(Guid id);
+        Task DeleteToolBox(int id);
 
-        Task EditToolBox(Guid id, Vaerktoejskasse toolBox);
+        Task EditToolBox(Vaerktoejskasse toolBox);
     }
 }

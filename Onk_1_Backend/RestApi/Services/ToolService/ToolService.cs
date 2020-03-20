@@ -22,7 +22,7 @@ namespace RestApi.Services.ToolService
                 .Options;
         }
 
-        public async Task DeleteTool(Guid id)
+        public async Task DeleteTool(int id)
         {
             using (var context = new HaandvaerkerDbContext(_options))
             {
@@ -34,7 +34,7 @@ namespace RestApi.Services.ToolService
             }
         }
 
-        public async Task EditTool(Guid id, Vaerktoej tool)
+        public async Task EditTool(Vaerktoej tool)
         {
             using (var context = new HaandvaerkerDbContext(_options))
             {
@@ -43,7 +43,7 @@ namespace RestApi.Services.ToolService
             }
         }
 
-        public async Task<Vaerktoej> GetTool(Guid id)
+        public async Task<Vaerktoej> GetTool(int id)
         {
             using (var context = new HaandvaerkerDbContext(_options))
             {

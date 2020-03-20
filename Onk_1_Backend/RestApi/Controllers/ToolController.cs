@@ -33,7 +33,7 @@ namespace RestApi.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        public async Task<Vaerktoej> Get([FromRoute] Guid id)
+        public async Task<Vaerktoej> Get([FromRoute] int id)
         {
             var tool = await _toolService.GetTool(id);
 
@@ -42,16 +42,16 @@ namespace RestApi.Controllers
 
         [HttpPut]
         [Route("{id}")]
-        public async Task<IActionResult> Put([FromRoute] Guid id, [FromBody] Vaerktoej newTool)
+        public async Task<IActionResult> Put([FromBody] Vaerktoej newTool)
         {
-            await _toolService.EditTool(id, newTool);
+            await _toolService.EditTool(newTool);
 
             return NoContent();
         }
 
         [HttpDelete]
         [Route("{id}")]
-        public async Task<IActionResult> Delete([FromRoute] Guid id)
+        public async Task<IActionResult> Delete([FromRoute] int id)
         {
             await _toolService.DeleteTool(id);
 

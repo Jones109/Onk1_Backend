@@ -61,10 +61,10 @@ namespace RestApi.Data
 
         private void onModelCreatingSeedData(ModelBuilder modelBuilder)
         {
-            Guid jId = Guid.NewGuid();
-            Guid mId = Guid.NewGuid();
-            Guid redBoxId = Guid.NewGuid();
-            Guid blackBoxId = Guid.NewGuid();
+            int jId = 1;
+            int mId = 2;
+            int redBoxId = 1;
+            int blackBoxId = 2;
 
             modelBuilder.Entity<Haandvaerker>().HasData(
                 new Haandvaerker
@@ -116,7 +116,7 @@ namespace RestApi.Data
                     VTFabrikat = "Mjolner",
                     VTSerienr = "11000",
                     VTModel = "7",
-                    VTId = Guid.NewGuid(),
+                    VTId = 1,
                     LiggerIvtk = redBoxId
                 },
                 new Vaerktoej
@@ -126,7 +126,7 @@ namespace RestApi.Data
                     VTFabrikat = "Biter",
                     VTSerienr = "00111",
                     VTModel = "4",
-                    VTId = Guid.NewGuid(),
+                    VTId = 2,
                     LiggerIvtk = blackBoxId
                 }
             );

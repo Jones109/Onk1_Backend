@@ -10,13 +10,13 @@ namespace RestApi.Services.CraftsManService
     {
         Task<List<Haandvaerker>> GetCraftsMen();
 
-        Task<Haandvaerker> GetCraftsMan(Guid id);
+        Task<Haandvaerker> GetCraftsMan(int id);
 
         Task SaveCraftsMan(Haandvaerker craftsMan);
 
-        Task DeleteCraftsMan(Guid id);
+        Task DeleteCraftsMan(int id);
 
-        Task EditCraftsMan(Guid id, Haandvaerker craftsMan);
+        Task EditCraftsMan(Haandvaerker craftsMan);
 
         bool CreateDB();
     }

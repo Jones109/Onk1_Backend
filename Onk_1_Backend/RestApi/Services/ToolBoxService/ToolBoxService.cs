@@ -22,7 +22,7 @@ namespace RestApi.Services.ToolBoxService
                 .Options;
         }
 
-        public async Task DeleteToolBox(Guid id)
+        public async Task DeleteToolBox(int id)
         {
             using (var context = new HaandvaerkerDbContext(_options))
             {
@@ -34,7 +34,7 @@ namespace RestApi.Services.ToolBoxService
             }
         }
 
-        public async Task EditToolBox(Guid id, Vaerktoejskasse toolBox)
+        public async Task EditToolBox(Vaerktoejskasse toolBox)
         {
             using (var context = new HaandvaerkerDbContext(_options))
             {
@@ -43,7 +43,7 @@ namespace RestApi.Services.ToolBoxService
             }
         }
 
-        public async Task<Vaerktoejskasse> GetToolBox(Guid id)
+        public async Task<Vaerktoejskasse> GetToolBox(int id)
         {
             using (var context = new HaandvaerkerDbContext(_options))
             {

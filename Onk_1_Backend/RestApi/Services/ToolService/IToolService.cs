@@ -10,12 +10,12 @@ namespace RestApi.Services.ToolService
     {
         Task<List<Vaerktoej>> GetTools();
 
-        Task<Vaerktoej> GetTool(Guid id);
+        Task<Vaerktoej> GetTool(int id);
 
         Task SaveTool(Vaerktoej tool);
 
-        Task DeleteTool(Guid id);
+        Task DeleteTool(int id);
 
-        Task EditTool(Guid id, Vaerktoej tool);
+        Task EditTool(Vaerktoej tool);
     }
 }

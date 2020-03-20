@@ -32,7 +32,7 @@ namespace RestApi.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        public async Task<Vaerktoejskasse> Get([FromRoute] Guid id)
+        public async Task<Vaerktoejskasse> Get([FromRoute] int id)
         {
             var toolBox = await _toolBoxService.GetToolBox(id);
 
@@ -41,16 +41,16 @@ namespace RestApi.Controllers
 
         [HttpPut]
         [Route("{id}")]
-        public async Task<IActionResult> Put([FromRoute] Guid id, [FromBody] Vaerktoejskasse newToolBox)
+        public async Task<IActionResult> Put([FromBody] Vaerktoejskasse newToolBox)
         {
-            await _toolBoxService.EditToolBox(id, newToolBox);
+            await _toolBoxService.EditToolBox(newToolBox);
 
             return NoContent();
         }
 
         [HttpDelete]
         [Route("{id}")]
-        public async Task<IActionResult> Delete([FromRoute] Guid id)
+        public async Task<IActionResult> Delete([FromRoute] int id)
         {
             await _toolBoxService.DeleteToolBox(id);
           
