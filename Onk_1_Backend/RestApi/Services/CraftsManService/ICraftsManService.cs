@@ -17,5 +17,7 @@ namespace RestApi.Services.CraftsManService
         Task DeleteCraftsMan(Guid id);
 
         Task EditCraftsMan(Guid id, Haandvaerker craftsMan);
+
+        bool CreateDB();
     }
 }

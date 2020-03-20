@@ -21,6 +21,7 @@ namespace RestApi.Controllers
         {
             _logger = logger;
             _craftsManService = craftsManService;
+            _craftsManService.CreateDB();
         }
 
         [HttpGet]
