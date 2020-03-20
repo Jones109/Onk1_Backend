@@ -18,7 +18,7 @@ namespace RestApi.Services.ToolBoxService
         {
             Configuration = configuration;
             _options = new DbContextOptionsBuilder<HaandvaerkerDbContext>()
-                .UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
+                .UseSqlServer(Configuration.GetConnectionString("F20ITONKASPNETKubernetesConnection"))
                 .Options;
         }
 

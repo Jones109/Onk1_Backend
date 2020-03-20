@@ -20,7 +20,7 @@ namespace RestApi.Services.CraftsManService
         {
             Configuration = configuration;
             _options = new DbContextOptionsBuilder<HaandvaerkerDbContext>()
-                .UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
+                .UseSqlServer(Configuration.GetConnectionString("F20ITONKASPNETKubernetesConnection"))
                 .Options;
         }
 

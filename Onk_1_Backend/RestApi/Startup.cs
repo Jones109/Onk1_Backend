@@ -32,7 +32,7 @@ namespace RestApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContext<HaandvaerkerDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<HaandvaerkerDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("F20ITONKASPNETKubernetesConnection")));
 
             services.AddScoped<ICraftsManService, CraftsManService>();
             services.AddScoped<IToolBoxService, ToolBoxService>();
