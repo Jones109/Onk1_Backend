@@ -59,7 +59,6 @@ namespace RestApi.Controllers
         }
 
         [HttpPost]
-        [Route("{id}")]
         public async Task<IActionResult> Post([FromBody] Vaerktoej tool)
         {
             await _toolService.SaveTool(tool);

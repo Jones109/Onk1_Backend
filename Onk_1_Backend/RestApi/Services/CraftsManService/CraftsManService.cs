@@ -69,6 +69,7 @@ namespace RestApi.Services.CraftsManService
         {
             using (var context = new HaandvaerkerDbContext(_options))
             {
+
                 await context.CraftsMen.AddAsync(craftsMan);
                 await context.SaveChangesAsync();
             }

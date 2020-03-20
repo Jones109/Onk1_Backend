@@ -60,7 +60,6 @@ namespace RestApi.Controllers
         }
 
         [HttpPost]
-        [Route("{id}")]
         public async Task<IActionResult> Post([FromBody] Haandvaerker craftsMan)
         {
             await _craftsManService.SaveCraftsMan(craftsMan);

@@ -58,7 +58,6 @@ namespace RestApi.Controllers
         }
 
         [HttpPost]
-        [Route("{id}")]
         public async Task<IActionResult> Post([FromBody] Vaerktoejskasse toolBox)
         {
             await _toolBoxService.SaveToolBox(toolBox);
