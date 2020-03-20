@@ -1,4 +1,7 @@
-﻿using Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Models;
+using RestApi.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,89 +11,65 @@ namespace RestApi.Services.ToolService
 {
     public class ToolService : IToolService
     {
+        public IConfiguration Configuration { get; }
+        private DbContextOptions<HaandvaerkerDbContext> _options;
 
-
-
-
-
-        //public Task DeleteTool(Guid id)
-        //{
-        //    return Task.CompletedTask;
-        //}
-
-        //public Task EditTool(Guid id, Tool tool)
-        //{
-        //    return Task.CompletedTask;
-        //}
-
-        //public async Task<Tool> GetTool(Guid id)
-        //{
-        //    return new Tool()
-        //    {
-        //        ToolBox = new ToolBox(),
-        //        Acquired = DateTime.Now,
-        //        Brand = "Brand1",
-        //        Id = Guid.NewGuid(),
-        //        Model = "Model",
-        //        SerialNumber = "ashgoiegnl347gd",
-        //        Type = "Hammer"
-        //    };
-        //}
-
-        //public async Task<List<Tool>> GetTools()
-        //{
-        //    var tools = new List<Tool>();
-        //    tools.Add(new Tool()
-        //    {
-        //        ToolBox = new ToolBox(),
-        //        Acquired = DateTime.Now,
-        //        Brand = "Brand1",
-        //        Id = Guid.NewGuid(),
-        //        Model = "Model",
-        //        SerialNumber = "ashgoiegnl347gd",
-        //        Type = "Hammer"
-        //    });
-        //    tools.Add(new Tool()
-        //    {
-        //        ToolBox = new ToolBox(),
-        //        Acquired = DateTime.Now,
-        //        Brand = "Brand2",
-        //        Id = Guid.NewGuid(),
-        //        Model = "Model2",
-        //        SerialNumber = "afghgjækajsg",
-        //        Type = "Saw"
-        //    });
-
-        //    return tools;
-        //}
-
-        //public Task SaveTool(Tool tool)
-        //{
-        //    return Task.CompletedTask;
-        //}
-        public Task DeleteTool(Guid id)
+        public ToolService(IConfiguration configuration)
         {
-            throw new NotImplementedException();
+            Configuration = configuration;
+            _options = new DbContextOptionsBuilder<HaandvaerkerDbContext>()
+                .UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
+                .Options;
         }
 
-        public Task EditTool(Guid id, Vaerktoej tool)
+        public async Task DeleteTool(Guid id)
         {
-            throw new NotImplementedException();
+            using (var context = new HaandvaerkerDbContext(_options))
+            {
+                var tool = context.Tools.First(c => c.VTId == id);
+
+                context.Tools.Attach(tool);
+                context.Tools.Remove(tool);
+                context.SaveChanges();
+            }
         }
 
-        public Task<Vaerktoej> GetTool(Guid id)
+        public async Task EditTool(Guid id, Vaerktoej tool)
         {
-            throw new NotImplementedException();
+            using (var context = new HaandvaerkerDbContext(_options))
+            {
+                context.Tools.Update(tool);
+                context.SaveChanges();
+            }
         }
 
-        public Task<List<Vaerktoej>> GetTools()
+        public async Task<Vaerktoej> GetTool(Guid id)
         {
-            throw new NotImplementedException();
+            using (var context = new HaandvaerkerDbContext(_options))
+            {
+                var tool = await context.Tools.FirstAsync(h => h.VTId == id);
+
+                return tool;
+            }
         }
 
-        public Task SaveTool(Vaerktoej tool)
+        public async Task<List<Vaerktoej>> GetTools()
         {
-            throw new NotImplementedException();
+            using (var context = new HaandvaerkerDbContext(_options))
+            {
+                var tools = context.Tools; ;
+
+                return await tools.ToListAsync(); ;
+            }
+        }
+
+        public async Task SaveTool(Vaerktoej tool)
+        {
+            using (var context = new HaandvaerkerDbContext(_options))
+            {
+                await context.Tools.AddAsync(tool);
+                await context.SaveChangesAsync();
+            }
         }
     }
 }

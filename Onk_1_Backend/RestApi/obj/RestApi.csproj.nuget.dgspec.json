@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Git\\Onk1_Backend\\Onk_1_Backend\\RestApi\\RestApi.csproj": {}
+    "C:\\Users\\Bruger\\Desktop\\Onk1_Backend\\Onk_1_Backend\\RestApi\\RestApi.csproj": {}
   },
   "projects": {
-    "C:\\Git\\Onk1_Backend\\Onk_1_Backend\\RestApi\\RestApi.csproj": {
+    "C:\\Users\\Bruger\\Desktop\\Onk1_Backend\\Onk_1_Backend\\RestApi\\RestApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Git\\Onk1_Backend\\Onk_1_Backend\\RestApi\\RestApi.csproj",
+        "projectUniqueName": "C:\\Users\\Bruger\\Desktop\\Onk1_Backend\\Onk_1_Backend\\RestApi\\RestApi.csproj",
         "projectName": "RestApi",
-        "projectPath": "C:\\Git\\Onk1_Backend\\Onk_1_Backend\\RestApi\\RestApi.csproj",
-        "packagesPath": "C:\\Users\\Jonas Hansen\\.nuget\\packages\\",
-        "outputPath": "C:\\Git\\Onk1_Backend\\Onk_1_Backend\\RestApi\\obj\\",
+        "projectPath": "C:\\Users\\Bruger\\Desktop\\Onk1_Backend\\Onk_1_Backend\\RestApi\\RestApi.csproj",
+        "packagesPath": "C:\\Users\\Bruger\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Bruger\\Desktop\\Onk1_Backend\\Onk_1_Backend\\RestApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Jonas Hansen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Bruger\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

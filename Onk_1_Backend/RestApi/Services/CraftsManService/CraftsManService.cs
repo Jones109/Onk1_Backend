@@ -49,7 +49,7 @@ namespace RestApi.Services.CraftsManService
         {
             using (var context = new HaandvaerkerDbContext(_options))
             {
-                var craftsMan = await context.CraftsMen.Include(c => c.Vaerktoejskasse).FirstAsync();
+                var craftsMan = await context.CraftsMen.FirstAsync(h=>h.HaandvaerkerId == id);
 
                 return craftsMan;
             }
@@ -59,7 +59,7 @@ namespace RestApi.Services.CraftsManService
         {
             using (var context = new HaandvaerkerDbContext(_options))
             {
-                var craftsMan = context.CraftsMen.Include(c => c.Vaerktoejskasse);
+                var craftsMan = context.CraftsMen;
 
                 return await craftsMan.ToListAsync<Haandvaerker>();
             }

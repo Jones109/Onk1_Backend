@@ -1,4 +1,7 @@
-﻿using Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Models;
+using RestApi.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,84 +11,65 @@ namespace RestApi.Services.ToolBoxService
 {
     public class ToolBoxService : IToolBoxService
     {
-        //    public Task DeleteToolBox(Guid id)
-        //    {
-        //        return Task.CompletedTask;
-        //    }
+        public IConfiguration Configuration { get; }
+        private DbContextOptions<HaandvaerkerDbContext> _options;
 
-        //    public Task EditToolBox(Guid id, ToolBox toolBox)
-        //    {
-        //        return Task.CompletedTask;
-        //    }
-
-        //    public async Task<ToolBox> GetToolBox(Guid id)
-        //    {
-        //        return new ToolBox()
-        //        {
-        //            Acquired = DateTime.Now,
-        //            Owner = new CraftsMan(),
-        //            Brand = "BrandStub",
-        //            Color = "Blue",
-        //            Id = Guid.NewGuid(),
-        //            Model = "A400",
-        //            SerialNumber = "asdfhsfdhasfsd"
-        //        };
-        //}
-
-        //    public async Task<List<ToolBox>> GetToolBoxes()
-        //    {
-        //        var toolBoxes = new List<ToolBox>();
-        //        toolBoxes.Add(new ToolBox()
-        //        {
-        //            Acquired = DateTime.Now,
-        //            Owner = new CraftsMan(),
-        //            Brand = "BrandStub",
-        //            Color = "Blue",
-        //            Id = Guid.NewGuid(),
-        //            Model = "A400",
-        //            SerialNumber = "asdfhsfdhasfsd"
-        //        });
-        //        toolBoxes.Add(new ToolBox()
-        //        {
-        //            Acquired = DateTime.Now,
-        //            Owner = new CraftsMan(),
-        //            Brand = "BrandStub2",
-        //            Color = "Yellow",
-        //            Id = Guid.NewGuid(),
-        //            Model = "A500",
-        //            SerialNumber = "oeriyteqropgjhafeblk"
-        //        });
-
-        //        return toolBoxes;
-        //    }
-
-        //    public Task SaveToolBox(ToolBox toolBox)
-        //    {
-        //        return Task.CompletedTask;
-        //    }
-        public Task DeleteToolBox(Guid id)
+        public ToolBoxService(IConfiguration configuration)
         {
-            throw new NotImplementedException();
+            Configuration = configuration;
+            _options = new DbContextOptionsBuilder<HaandvaerkerDbContext>()
+                .UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
+                .Options;
         }
 
-        public Task EditToolBox(Guid id, Vaerktoejskasse toolBox)
+        public async Task DeleteToolBox(Guid id)
         {
-            throw new NotImplementedException();
+            using (var context = new HaandvaerkerDbContext(_options))
+            {
+                var toolBox = context.ToolBoxes.First(c => c.VTKId == id);
+
+                context.ToolBoxes.Attach(toolBox);
+                context.ToolBoxes.Remove(toolBox);
+                context.SaveChanges();
+            }
         }
 
-        public Task<Vaerktoejskasse> GetToolBox(Guid id)
+        public async Task EditToolBox(Guid id, Vaerktoejskasse toolBox)
         {
-            throw new NotImplementedException();
+            using (var context = new HaandvaerkerDbContext(_options))
+            {
+                context.ToolBoxes.Update(toolBox);
+                context.SaveChanges();
+            }
         }
 
-        public Task<List<Vaerktoejskasse>> GetToolBoxes()
+        public async Task<Vaerktoejskasse> GetToolBox(Guid id)
         {
-            throw new NotImplementedException();
+            using (var context = new HaandvaerkerDbContext(_options))
+            {
+                var toolBox = await context.ToolBoxes.FirstAsync(h => h.VTKId == id);
+
+                return toolBox;
+            }
         }
 
-        public Task SaveToolBox(Vaerktoejskasse toolBox)
+        public async Task<List<Vaerktoejskasse>> GetToolBoxes()
         {
-            throw new NotImplementedException();
+            using (var context = new HaandvaerkerDbContext(_options))
+            {
+                var toolBox = context.ToolBoxes; ;
+
+                return  await toolBox.ToListAsync(); ;
+            }
+        }
+
+        public async Task SaveToolBox(Vaerktoejskasse toolBox)
+        {
+            using (var context = new HaandvaerkerDbContext(_options))
+            {
+                await context.ToolBoxes.AddAsync(toolBox);
+                await context.SaveChangesAsync();
+            }
         }
     }
 }

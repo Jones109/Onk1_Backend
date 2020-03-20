@@ -37,19 +37,26 @@ namespace RestApi.Data
 
         private void onModelCreatingCraftsMan(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Haandvaerker>();
+            modelBuilder.Entity<Haandvaerker>()
+                .HasMany(tb => tb.Vaerktoejskasse)
+                .WithOne(hv => hv.EjesAfNavigation)
+                .HasForeignKey(x => x.VTKEjesAf)
+                .OnDelete(DeleteBehavior.Cascade);
+
         }
 
         private void onModelCreatingToolBox(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Vaerktoejskasse>()
-                .HasOne(tb => tb.EjesAfNavigation);
+                .HasMany(x => x.Vaerktoej)
+                .WithOne(y => y.LiggerIvtkNavigation)
+                .HasForeignKey(z => z.LiggerIvtk)
+                .OnDelete(DeleteBehavior.Cascade);
         }
 
         private void onModelCreatingTool(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Vaerktoej>()
-                .HasOne(t => t.LiggerIvtkNavigation);
+
         }
 
         private void onModelCreatingSeedData(ModelBuilder modelBuilder)
